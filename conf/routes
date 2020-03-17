@@ -1,0 +1,7 @@
+
+GET         /                    controllers.RecipeController.showRecipeForm()
+POST        /                    controllers.RecipeController.submitRecipe()
+
+GET         /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+
+      

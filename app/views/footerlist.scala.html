@@ -1,0 +1,10 @@
+@import scala.collection.mutable.ListBuffer
+@(recipeList: ListBuffer[Recipe])
+
+<div>
+    <ul>
+        @for(i <- recipeList.indices) {
+            <li>@recipeList(i).toString</li>
+        }
+    </ul>
+</div>

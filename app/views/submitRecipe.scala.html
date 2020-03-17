@@ -1,0 +1,23 @@
+@import models.Recipe
+@import scala.collection.mutable.ListBuffer
+@(form: Form[Recipe], recipeList: ListBuffer[Recipe])(noOfIngredients: Int = 1)(implicit messagesProvider: MessagesProvider))
+
+@addAnotherField(field: Field) = {
+    @helper.inputText(field, 'id -> "RecipeIngredients", 'class -> "InputField", '_showConstraints -> false, 'onclick -> "javascript:hello")
+}
+
+
+@main("Submit recipe")(recipeList) {
+
+
+    @helper.form(routes.RecipeController.submitRecipe()) {
+        <input type="number" id="howManyIngs" name="how many ingredients">
+        @helper.inputText(form("dish"), 'id -> "RecipeName", 'class -> "InputField", '_showConstraints -> false)
+        @helper.repeat(form("ingredients"), min = noOfIngredients) { ingredientField =>
+            @helper.inputText(ingredientField, 'class -> "InputField", '_showConstraints -> false)
+        }
+        @helper.inputText(form("instructions"), 'id -> "RecipeName", 'class -> "InputField", '_showConstraints -> true)
+        <button type="submit">Create recipe</button>
+
+    }
+}
